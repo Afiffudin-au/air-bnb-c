@@ -4,6 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import InfoCard from '../components/InfoCard'
+import Map from '../components/Map'
 
 function search({ searchResults }) {
   const router = useRouter()
@@ -23,7 +24,11 @@ function search({ searchResults }) {
       <main className='flex'>
         <section className='flex-grow pt-14 px-6'>
           <p className='text-xs'>
-            300+ stays - {range} - for {noOfGuests} guest
+            300+ stays -{' '}
+            <span className='bg-red-400 rounded-lg text-white p-2 font-semibold'>
+              {range}
+            </span>{' '}
+            - for {noOfGuests} guest
           </p>
           <h1 className='text-3xl font-semibold m-2 mb-6'>
             Stays in {location}
@@ -49,6 +54,9 @@ function search({ searchResults }) {
               />
             ))}
           </div>
+        </section>
+        <section className='hidden xl:inline-flex xl:min-w-[600px]'>
+          <Map searchResults={searchResults} />
         </section>
       </main>
       <Footer />
